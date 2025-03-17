@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Founderoo Launch Announcement</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+</head>
+<body>
+
+  <!-- Announcement Section -->
+  <section class="announcement" id="announcement">
+    <div class="announcement-content" data-aos="fade-up">
+      <h1>Founderoo is Launching Soon!</h1>
+
+      <!-- Countdown Timer -->
+      <div id="countdown" class="countdown-timer"></div>
+
+      <p>Your go-to platform for entrepreneurs is almost here. Stay tuned for something amazing!</p>
+      <a href="#contact" class="cta-button">Get Notified</a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div class="contact-content" data-aos="fade-up">
+      <h2>Get In Touch</h2>
+      <p>If you have any questions or want to learn more, feel free to reach out to us!</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScMs8UjqmcdQhswVOz0cmMubDGlaQNpe3WBg1ty8F6jPuVsaA/viewform?usp=header" class="cta-button" target="_blank">Fill Out the Form</a>
+    </div>
+  </section>
+
+  <script>
+    // Countdown Timer Logic
+    const launchDate = new Date("March 30, 2025 12:00:00").getTime();
+    
+    const timer = setInterval(function() {
+      const now = new Date().getTime();
+      const timeLeft = launchDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = 
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (timeLeft < 0) {
+        clearInterval(timer);
+        document.getElementById("countdown").innerHTML = "We are live!";
+      }
+    }, 1000);
+
+    // Initialize AOS (Animations)
+    AOS.init({ duration: 1000, once: true });
+  </script>
+
+</body>
+</html>
